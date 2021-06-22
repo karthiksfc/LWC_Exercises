@@ -21,9 +21,9 @@
     <label>Certification</label>
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
+    <tabs>AwInstructors</tabs>
     <tabs>standard-Account</tabs>
     <tabs>standard-Contact</tabs>
-    <tabs>AwInstructors</tabs>
     <tabs>Certification__c</tabs>
     <tabs>Course__c</tabs>
     <tabs>Course_Delivery__c</tabs>

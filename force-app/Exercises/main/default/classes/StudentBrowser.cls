@@ -15,6 +15,7 @@ public static List<Contact> getStudents(String instructorId, String courseDelive
 		query += 'WITH SECURITY_ENFORCED ';
 		query += 'ORDER BY Name';
 
+        //System.debug(query);
 		return Database.query(query);
     }
 
