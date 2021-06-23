@@ -1,8 +1,7 @@
 public with sharing class CertifiedStudentList {
     
     @AuraEnabled(cacheable=true)
-    public static List<Certification_Held__c> getCertifiedStudents(Id
-    certificationId) {
+    public static List<Certification_Held__c> getCertifiedStudents(Id certificationId) {
 
         return [
             SELECT Id, Certified_Professional__r.Name,
@@ -15,4 +14,10 @@ public with sharing class CertifiedStudentList {
             ORDER BY Certified_Professional__r.Name
             ];
     }
+
+    @AuraEnabled
+    public static void deleteStudentCertification(List < String > certificationIds) {
+        delete[SELECT id FROM Certification_Held__c WHERE Id IN: certificationIds];
+    }
+
 }
