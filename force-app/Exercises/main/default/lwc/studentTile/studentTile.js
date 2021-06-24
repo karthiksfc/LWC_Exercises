@@ -20,4 +20,10 @@ export default class StudentTile extends LightningElement {
     get tileSelected() {
         return (this.selectedStudentId === this.student.Id) ? "tile selected" : "tile";
     }
+
+    //renderedCallback() {
+    //    console.log('rendering student '+ this.student.Id);
+    //}
+  
+        
 }
