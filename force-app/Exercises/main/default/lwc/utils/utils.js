@@ -20,4 +20,16 @@ export default class Utils {
                 field);
     }
 
+    static showModal = (firingComponent, header, content) => {
+        const evt = new CustomEvent('showmodal', {
+            detail: {
+                header,
+                content
+            },
+            bubbles: true,
+            composed: true
+        });
+        firingComponent.dispatchEvent(evt);
+    }
+
 }
