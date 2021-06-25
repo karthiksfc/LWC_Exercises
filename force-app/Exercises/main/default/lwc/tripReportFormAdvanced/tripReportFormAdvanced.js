@@ -187,11 +187,15 @@ export default class TripReportFormAdvanced extends LightningElement {
 
     returnToBrowseMode() {
         const evt = new CustomEvent('tripreportmodechange', {
-        detail: {
-        mode: "browse"
-        },
+            detail: {
+                mode: "browse"
+            },
         });
         this.dispatchEvent(evt);
-        }
+    }
+
+    onCancel() {
+        this.returnToBrowseMode();
+    }
 
 }
