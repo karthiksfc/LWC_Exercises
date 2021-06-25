@@ -42,6 +42,7 @@ export default class TripReportFormAdvanced extends LightningElement {
     rating = 3;
     review;
 
+
     //TODO #3: following the examples of and dateVisited and instructorId, store the value of the name, rating, review type, and review fields in JavaScript properties 
     @wire(getRecord, { recordId: '$recordId', fields: fieldsToLoad })
     wiredTripReport({ error, data }) {
@@ -134,8 +135,10 @@ export default class TripReportFormAdvanced extends LightningElement {
             //todo #6: When creating a new record, define an object named recordInput with two property:
             //---fields, which contains the fieldsToSave object
             //---apiName, which contains the api name of the trip report object
-            const recordInput = { fields:fieldsToSave, apiName:
-            OBJECT_TRIP_REPORT.objectApiName};
+            const recordInput = {
+                fields: fieldsToSave, apiName:
+                    OBJECT_TRIP_REPORT.objectApiName
+            };
 
             createRecord(recordInput)
                 .then(tripReport => {
@@ -154,7 +157,7 @@ export default class TripReportFormAdvanced extends LightningElement {
             //so that the system knows which record to update
             fieldsToSave[FIELD_ID.fieldApiName] = this.recordId;
             const recordInput = { fields: fieldsToSave }
-            
+
             updateRecord(recordInput)
                 .then(() => {
                     Utils.showToast(this, 'Success', 'Trip report updated', 'success');
@@ -166,6 +169,18 @@ export default class TripReportFormAdvanced extends LightningElement {
                 });
         }
 
+    }
+
+    validateFields() {
+        const fields = Array.from(this.template.querySelectorAll('.validateMe'));
+        return fields.every((currentField) =>
+            currentField.checkValidity());
+    }
+
+    saveButtonDisabled = true;
+
+    onBlur() {
+        this.saveButtonDisabled = !this.validateFields();
     }
 
 }
