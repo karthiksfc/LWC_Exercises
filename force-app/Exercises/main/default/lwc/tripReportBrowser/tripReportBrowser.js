@@ -45,4 +45,23 @@ export default class TripReportBrowser extends LightningElement {
 			}
 		});
 	}
+
+	changeTripReportMode(newMode) {
+		const eventDetail = {
+			mode: newMode
+		}
+		if (newMode === 'edit') {
+			eventDetail.Id = this.selectedRecordId;
+		}
+		const evt = new CustomEvent('tripreportmodechange', {
+			detail: eventDetail
+		});
+		this.dispatchEvent(evt);
+	}
+
+	selectedRecordId = 0;
+
+	onBtnNewClick() {
+		this.changeTripReportMode('add');
+	}
 }
